@@ -12,22 +12,13 @@ class TwitchAPI
       :hls   => true
     }
 
-    streams = response.body["streams"].map { |m| m.values_at("_id", "game", "viewers", "preview", "links")}
-    #s = response.body["streams"]["channel"].select { |s| s["url"]}
-    # t = response.body["streams"].first
-    #  v = t["channel"]["url"]
-    streams.each do |r|
-      Twitch.where(stream_id: r[0], game: r[1], viewers: r[2], preview: r[3].to_s, links: r[4]).first_or_create!
+    streams = response.body["streams"].map do |m| 
+      part = m.values_at("_id", "game", "viewers", "preview")
+      part.push m["channel"]["url"]
+    end
+
+    streams.each do |id, game, viewers, preview, url|
+      Twitch.where(stream_id: id, game: game, viewers: viewers, preview: preview.to_s, links: url).first_or_create!
     end 
   end
-
-  # def steam_url     
-  #   url = []
-  #   t = response.body["streams"]
-  #   t.each do |r|
-  #     a = r["channel"]["url"]
-  #     a.to_s
-  #     url.push a
-  #   end
-  # end
 end
