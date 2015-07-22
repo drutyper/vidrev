@@ -17,7 +17,7 @@ class TwitchAPI
     # t = response.body["streams"].first
     #  v = t["channel"]["url"]
     streams.each do |r|
-      Twitch.where(stream_id: r[0], game: r[1], viewers: r[2], preview: r[3], links: r[4]).first_or_create!
+      Twitch.where(stream_id: r[0], game: r[1], viewers: r[2], preview: r[3].to_s, links: r[4]).first_or_create!
     end 
   end
 

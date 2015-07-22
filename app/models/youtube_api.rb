@@ -14,9 +14,9 @@ class YoutubeAPI
        :query => query
      }
 
-    videos = response.body["data"].map { |c| c.values_at("videoId","title", "description","img")}
+    videos = response.body["data"].map { |c| c.values_at("videoId", "title", "description", "img")}
     videos.each do |r|
-      Youtube.where(videoId: r[0], title: r[1], description: r[2], image: r[3]).first_or_create!
+      Youtube.where(videoId: r[0], title: r[1], description: r[2], image: r[3].to_s).first_or_create!
     end
   end
 end
