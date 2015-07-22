@@ -34,7 +34,7 @@ class MetacriticAPI
     }
     reviews = response.body["results"].map { |c| c.values_at("critic", "score", "excerpt", "date", "link")}
     reviews.each do |r|
-      Metacritic.create! critic: r[0], score: r[1], excerpt: r[2], date: r[3], link: r[4]
+      Metacritic.where(critic: r[0], score: r[1], excerpt: r[2], date: r[3], link: r[4]).first_or_create!
     end
   end
   
