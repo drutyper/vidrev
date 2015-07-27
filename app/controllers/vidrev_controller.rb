@@ -1,12 +1,16 @@
 class VidrevController < ApplicationController
   def index
-    m = MetacriticAPI.new
-    @meta = m.search_function "batman arkham knight"
+    if params[:search]
+      m = MetacriticAPI.new
+      @meta = m.search_function params[:search]
 
-    y = YoutubeAPI.new
-    @youtube = y.video_review "batman arkham knight review"
+      y = YoutubeAPI.new
+      @youtube = y.video_review params[:search]
 
-    t = TwitchAPI.new
-    @twitch = t.game_stream "dota 2"
+      t = TwitchAPI.new
+      @twitch = t.game_stream params[:search]
+    else
+      flash[:failure] =  "Nothing found"
+    end
   end
 end

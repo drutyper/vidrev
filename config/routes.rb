@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   resource :metacritic
   resource :youtube
-
-  get "vidrev/index"
+  resource :vidrev
 
   root to: 'vidrev#index'
 end

@@ -11,7 +11,7 @@ class YoutubeAPI
       "Accept" => "application/json"
     },
      parameters:{
-       :query => query
+       :query => "#{query} review"
      }
 
     videos = response.body["data"].map { |c| c.values_at("videoId", "title", "description", "img")}
