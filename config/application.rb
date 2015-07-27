@@ -25,7 +25,7 @@ module Vidrev
         
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
-        origins 'localhost:3000, vidrev1.herokuapp.com'
+        origins 'localhost:3000, https://vidrev1.herokuapp.com'
         resource '*', :headers => :any, :methods => [:any]
       end
     end
