@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721202114) do
+ActiveRecord::Schema.define(version: 20150730202917) do
 
   create_table "metacritics", force: :cascade do |t|
     t.string   "critic"
@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(version: 20150721202114) do
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "query"
   end
+
+  add_index "youtubes", ["query"], name: "index_youtubes_on_query"
 
 end
