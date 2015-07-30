@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730202917) do
+ActiveRecord::Schema.define(version: 20150730210524) do
 
   create_table "metacritics", force: :cascade do |t|
     t.string   "critic"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20150730202917) do
     t.string   "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "url"
   end
+
+  add_index "metacritics", ["url"], name: "index_metacritics_on_url"
 
   create_table "twitches", force: :cascade do |t|
     t.string   "stream_id"
@@ -31,7 +34,10 @@ ActiveRecord::Schema.define(version: 20150730202917) do
     t.string   "links"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "search"
   end
+
+  add_index "twitches", ["search"], name: "index_twitches_on_search"
 
   create_table "youtubes", force: :cascade do |t|
     t.string   "videoId"
