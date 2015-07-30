@@ -6,7 +6,7 @@ class VidrevController < ApplicationController
 
       y = YoutubeAPI.new
       @youtube = y.video_review params[:search]
-binding.pry
+
       t = TwitchAPI.new
       @twitch = t.game_stream params[:search]
     else
