@@ -1,4 +1,4 @@
-json.Metacritic @meta do |m|
+json.Metacritic @metacritic do |m|
 json.critic       m[0]
 json.score        m[1]
 json.excerpt      m[2]
