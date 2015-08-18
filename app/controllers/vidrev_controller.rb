@@ -1,4 +1,6 @@
 class VidrevController < ApplicationController
+  before_action { request.format = :json } 
+  
   def index
     if params[:search]
 
